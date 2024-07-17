@@ -1,12 +1,15 @@
 import React from 'react'
 import { ArrowLeft } from '@phosphor-icons/react/dist/ssr'
+import Link from 'next/link'
 
 export default function HomeSummary() {
   return (
     <div className="bg-green_light">
       <div className="flex flex-col gap-6 p-6 pb-3 bg-green_light">
         <div>
-          <ArrowLeft size={24} color="#639339" className="align-left" />
+          <Link href="/">
+            <ArrowLeft size={24} color="#639339" className="align-left" />
+          </Link>
 
           <div className="flex flex-col items-center gap-1 bg-green_light py-5 px-4 rounded-md">
             <h1 className="text-3xl text-gray-1 text-center font-bold">

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
-import { Nunito } from 'next/font/google'
+import { Nunito_Sans } from 'next/font/google'
 import './globals.css'
 
-const nunito = Nunito({ subsets: ['latin'], variable: '--font-nunito' })
+const nunito = Nunito_Sans({ subsets: ['latin'], variable: '--font-nunito' })
 
 export const metadata: Metadata = {
   title: {

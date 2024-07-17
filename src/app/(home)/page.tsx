@@ -3,6 +3,7 @@ import { Header } from '@/components/header'
 import { OffDietIcon } from '@/components/icons/off-diet-icon'
 import { OnDietIcon } from '@/components/icons/on-diet-icon'
 import { ArrowUpRight } from '@phosphor-icons/react/dist/ssr'
+import Link from 'next/link'
 import React from 'react'
 
 export default function Home() {
@@ -13,16 +14,21 @@ export default function Home() {
       <div className="relative flex flex-col items-center gap-1 bg-green_light py-5 px-4 rounded-md">
         <h1 className="text-3xl text-gray-1 text-center font-bold">90,86%</h1>
         <p className="text-sm text-center">das refeições dentro da dieta</p>
-        <ArrowUpRight
-          size={24}
-          color="#639339"
-          className="absolute right-2 top-2"
-        />
+        <Link href="/summary">
+          <ArrowUpRight
+            size={24}
+            color="#639339"
+            className="absolute right-2 top-2"
+          />
+        </Link>
       </div>
 
       <div className="flex flex-col gap-2">
         <h1 className="text-base text-left">Refeições</h1>
-        <Button text="Nova refeição" variant="add" />
+
+        <Link href="/meal/new">
+          <Button text="Nova refeição" variant="add" />
+        </Link>
       </div>
 
       <div className="flex flex-col gap-2">
@@ -55,7 +61,7 @@ export default function Home() {
                 X-Salada
               </h1>
               <div className="w-[15px]">
-                <OnDietIcon variant='light'/>
+                <OnDietIcon variant="light" />
               </div>
             </div>
           </div>
@@ -87,7 +93,7 @@ export default function Home() {
                 X-tudoooooooooooooooooooooooooooooooooooooooooooo
               </h1>
               <div className="w-[15px]">
-                <OnDietIcon variant='light'/>
+                <OnDietIcon variant="light" />
               </div>
             </div>
           </div>
