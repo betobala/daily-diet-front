@@ -11,7 +11,7 @@ export function NewMealForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-gray-7 p-6 pt-10 rounded-t-3xl flex flex-col gap-4"
+      className="bg-gray-7 rounded-t-3xl flex flex-col gap-4"
     >
       <div className="bg-gray-7 flex flex-col gap-2">
         <Input label="Nome" variant="text" />

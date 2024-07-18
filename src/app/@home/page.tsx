@@ -1,15 +1,43 @@
+'use client'
 import { Button } from '@/components/button'
 import { Header } from '@/components/header'
 import { OffDietIcon } from '@/components/icons/off-diet-icon'
 import { OnDietIcon } from '@/components/icons/on-diet-icon'
+import { api } from '@/data/api'
 import { ArrowUpRight } from '@phosphor-icons/react/dist/ssr'
+import { getCookies } from 'cookies-next'
 import Link from 'next/link'
 import React from 'react'
 
+interface Meal {
+  id: string
+  user_id: string
+  name: string
+  description: string
+  is_diet: boolean
+  meal_time: string
+  created_at: string
+  updated_at: string
+}
+
 export default function Home() {
+  const cookies = getCookies()
+
+  async function getAllMeals() {
+    const response = await api('/meals', {
+      method: 'GET',
+      credentials: 'include',
+    })
+      .then((response) => response.json())
+      .then(async (data) => {
+        console.log(data)
+      })
+  }
+
   return (
     <div className="flex flex-col gap-6 p-6">
       <Header />
+      <Button text="fetch meals" variant="default" onClick={getAllMeals} />
 
       <div className="relative flex flex-col items-center gap-1 bg-green_light py-5 px-4 rounded-md">
         <h1 className="text-3xl text-gray-1 text-center font-bold">90,86%</h1>

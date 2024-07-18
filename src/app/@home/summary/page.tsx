@@ -38,8 +38,9 @@ export default function HomeSummary() {
           </h1>
           <span className="text-sm text-center">refeições registradas</span>
         </div>
-        <div className="flex items-center justify-center gap-3">
-          <div className="bg-green_light p-4 rounded-lg flex flex-col items-center">
+
+        <div className="flex items-center justify-center gap-7 w-[100%]">
+          <div className="bg-green_light p-4 rounded-lg flex flex-col items-center w-[46%] h-[100%]">
             <h1 className="text-2xl font-bold text-center text-gray-1 leading-[130%]">
               99
             </h1>
@@ -47,7 +48,8 @@ export default function HomeSummary() {
               refeições dentro da dieta
             </span>
           </div>
-          <div className="bg-red_light p-4 rounded-lg flex flex-col items-center">
+
+          <div className="bg-red_light p-4 rounded-lg flex flex-col items-center w-[46%] h-[100%]">
             <h1 className="text-2xl font-bold text-center text-gray-1 leading-[130%]">
               10
             </h1>
