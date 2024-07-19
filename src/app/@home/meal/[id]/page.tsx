@@ -37,7 +37,7 @@ export default function MealView({ params }: MealViewProps) {
     }
 
     handleSetMeal()
-  }, [])
+  }, [params.id])
   return (
     <div
       className={` ${meal?.is_diet ? 'bg-green_light' : 'bg-red_light'} flex flex-col`}

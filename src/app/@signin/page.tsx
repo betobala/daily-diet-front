@@ -53,7 +53,7 @@ export default function SignIn() {
           label="E-mail"
           variant="text"
           name="email"
-          defaultValue={email ?? ''}
+          value={email ?? ''}
           onChange={(e) => setEmail(e.target.value)}
           required
         />

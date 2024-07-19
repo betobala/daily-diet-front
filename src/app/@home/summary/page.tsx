@@ -36,7 +36,11 @@ export default function HomeSummary() {
       >
         <div>
           <Link href="/">
-            <ArrowLeft size={24} color={`${summary?.percentageMealsOnDiet > 50 ? '#639339' : '#BF3B44'}`} className="align-left" />
+            <ArrowLeft
+              size={24}
+              color={`${summary?.percentageMealsOnDiet > 50 ? '#639339' : '#BF3B44'}`}
+              className="align-left"
+            />
           </Link>
 
           <div

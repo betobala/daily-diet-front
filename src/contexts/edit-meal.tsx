@@ -10,7 +10,7 @@ interface EditMealContextType {
 const EditMealContext = createContext({} as EditMealContextType)
 
 export function EditMealProvider({ children }: { children: ReactNode }) {
-  const [isOnDiet, setIsOnDiet] = useState<boolean>()
+  const [isOnDiet, setIsOnDiet] = useState<boolean>(false)
 
   function setIsOnDietEditForm(isDiet: boolean) {
     setIsOnDiet(isDiet)

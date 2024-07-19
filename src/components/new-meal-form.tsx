@@ -102,7 +102,7 @@ export function NewMealForm({ ...props }: NewMealFormProps) {
         </div>
       </div>
 
-      <DietOptionSelect variant='new' />
+      <DietOptionSelect variant="new" />
     </form>
   )
 }

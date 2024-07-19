@@ -32,8 +32,8 @@ function convertToISO(data: string, hora: string): string {
 export function EditMealForm({ data, ...props }: EditMealFormProps) {
   const [name, setName] = useState<string>(data.name)
   const [description, setDescription] = useState<string>(data.description)
-  const [date, setDate] = useState<string>()
-  const [time, setTime] = useState<string>()
+  const [date, setDate] = useState<string>('')
+  const [time, setTime] = useState<string>('')
 
   const { isOnDiet, setIsOnDietEditForm } = useEditMeal()
 
@@ -43,8 +43,6 @@ export function EditMealForm({ data, ...props }: EditMealFormProps) {
     event.preventDefault()
 
     const dateTime = convertToISO(date, time)
-
-    console.log(`/meals/${data.id}`)
 
     const response = await api(`/meals/${data.id}`, {
       method: 'PUT',
@@ -72,7 +70,7 @@ export function EditMealForm({ data, ...props }: EditMealFormProps) {
       setIsOnDietEditForm(data.is_diet)
     }
     updateIsOnDiet()
-  }, [])
+  }, [data.is_diet, data.meal_time, setIsOnDietEditForm])
 
   return (
     <form

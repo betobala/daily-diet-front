@@ -34,7 +34,7 @@ export default function EditMeal({ params }: MealEditProps) {
     }
 
     handleSetMeal()
-  }, [])
+  }, [params.id])
 
   return (
     <div className="bg-gray-5">

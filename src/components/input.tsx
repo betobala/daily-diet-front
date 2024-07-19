@@ -5,6 +5,7 @@ import { PatternFormat } from 'react-number-format'
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string
   variant: 'text' | 'date' | 'time' | 'password'
+  value: string
 }
 export function Input({
   label,

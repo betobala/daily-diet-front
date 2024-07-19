@@ -48,7 +48,7 @@ export default function Home() {
     // Utilizamos um Set para garantir datas únicas
 
     array.forEach((obj) => {
-      const { date, hour } = separateDateAndHourString(obj.meal_time)
+      const { date } = separateDateAndHourString(obj.meal_time)
 
       datesSet.add(date) // Adiciona a data ao Set
     })
@@ -92,7 +92,7 @@ export default function Home() {
     }
     getAllMeals()
     getSummary()
-  }, [])
+  }, [router])
 
   return (
     <div className="flex flex-col gap-6 p-6">

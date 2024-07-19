@@ -5,13 +5,7 @@ import { Input } from '@/components/input'
 import { api } from '@/data/api'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { FormEvent, useEffect, useState } from 'react'
-
-interface CreateUserBody {
-  name: string
-  email: string
-  password: string
-}
+import { FormEvent, useState } from 'react'
 
 export default function Register() {
   const [name, setName] = useState<string>('')

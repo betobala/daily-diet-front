@@ -10,7 +10,7 @@ interface NewMealContextType {
 const NewMealContext = createContext({} as NewMealContextType)
 
 export function NewMealProvider({ children }: { children: ReactNode }) {
-  const [isOnDiet, setIsOnDiet] = useState<boolean>()
+  const [isOnDiet, setIsOnDiet] = useState<boolean>(false)
 
   function setIsOnDietNewForm(isDiet: boolean) {
     setIsOnDiet(isDiet)

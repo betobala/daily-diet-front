@@ -1,5 +1,5 @@
 'use client'
-import { FormEvent, useState } from 'react'
+import { MouseEvent, useState } from 'react'
 import Select from './select'
 import { useNewMeal } from '@/contexts/new-meal'
 import { useEditMeal } from '@/contexts/edit-meal'
@@ -23,7 +23,7 @@ export default function DietOptionSelect({
   const { setIsOnDietNewForm } = useNewMeal()
   const { setIsOnDietEditForm } = useEditMeal()
 
-  function handleYesButton(event: FormEvent<HTMLFormElement>) {
+  function handleYesButton(event: MouseEvent<HTMLButtonElement>) {
     event.preventDefault()
     if (!isButtonYesActived) {
       setIsButtonNoActived(false)
@@ -35,7 +35,7 @@ export default function DietOptionSelect({
       }
     }
   }
-  function handleNoButton(event: FormEvent<HTMLFormElement>) {
+  function handleNoButton(event: MouseEvent<HTMLButtonElement>) {
     event.preventDefault()
     if (!isButtonNoActived) {
       setIsButtonYesActived(false)
@@ -47,7 +47,7 @@ export default function DietOptionSelect({
       }
     }
   }
-  
+
   return (
     <div className="flex flex-col gap-2">
       <h1 className="text-sm font-bold text-left">Está dentro da dieta?</h1>
