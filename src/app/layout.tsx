@@ -2,8 +2,10 @@ import type { Metadata } from 'next'
 import { Nunito_Sans as Nunito } from 'next/font/google'
 import './globals.css'
 import { cookies } from 'next/headers'
+import { NewMealProvider } from '@/contexts/new-meal'
+import { EditMealProvider } from '@/contexts/edit-meal'
 
-const nunito = Nunito({ subsets: ['latin'], variable: '--font-nunito' })
+const nunito = Nunito({ subsets: ['latin'], variable: '--font-nunito-sans' })
 
 export const metadata: Metadata = {
   title: {
@@ -25,7 +27,7 @@ export default function RootLayout({
   const sessionId = cookieStore.get('sessionId')
 
   return (
-    <html className={nunito.variable} lang="pt">
+    <html className={nunito.className} lang="pt">
       <body className="bg-gray-7 text-gray-2 leading-[130%]">
         <>{sessionId ? home : signin}</>
         {children}

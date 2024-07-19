@@ -17,7 +17,6 @@ export default function Register() {
   const [name, setName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-  const [body, setBody] = useState<CreateUserBody>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const router = useRouter()
@@ -41,8 +40,6 @@ export default function Register() {
       setIsLoading(false)
     }
   }
-
-  useEffect(() => {}, [name, email, password, body])
 
   return (
     <div className="flex flex-col items-center justify-center h-dvh gap-4 p-6 mt-[-100px]">

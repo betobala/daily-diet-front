@@ -19,20 +19,22 @@ export function Input({
       {variant === 'date' && (
         <PatternFormat
           className="border border-gray-5 focus:border-gray-3 focus:outline-none focus:ring-0 bg-gray-7 text-base p-3.5 rounded-md w-[100%]"
-          placeholder="dd/mm/aaaa"
-          format="%%/%%/%%%%"
+          placeholder="dd.mm.aaaa"
+          format="%%.%%.%%%%"
           patternChar="%"
           type="text"
+          value={value}
           onChange={onChange}
         />
       )}
       {variant === 'time' && (
         <PatternFormat
           className="border border-gray-5 focus:border-gray-3 focus:outline-none focus:ring-0 bg-gray-7 text-base p-3.5 rounded-md w-[100%]"
-          placeholder="00:00:00"
+          placeholder="00:00"
           format="%%:%%"
           patternChar="%"
           type="text"
+          value={value}
           onChange={onChange}
         />
       )}

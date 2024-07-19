@@ -13,7 +13,6 @@ export default function Select({ variant, isActive, ...props }: SelectProps) {
   const [borderColor, setBorderColor] = useState<string>('')
 
   useEffect(() => {
-    console.log(borderColor)
     if (variant === 'yes' && isActive) {
       setBorderColor('border border-green_dark bg-green_light')
     } else if (variant === 'no' && isActive) {

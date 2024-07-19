@@ -1,20 +1,38 @@
 'use client'
-import { FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useState } from 'react'
 import Select from './select'
+import { useNewMeal } from '@/contexts/new-meal'
+import { useEditMeal } from '@/contexts/edit-meal'
 
 interface DietOptionSelectProps {
-  label: string
+  activeButton?: 'yes' | 'no'
+  variant: 'edit' | 'new'
 }
 
-export default function DietOptionSelect({ label }: DietOptionSelectProps) {
-  const [isButtonYesActived, setIsButtonYesActived] = useState<boolean>(false)
-  const [isButtonNoActived, setIsButtonNoActived] = useState<boolean>(false)
+export default function DietOptionSelect({
+  activeButton,
+  variant,
+}: DietOptionSelectProps) {
+  const [isButtonYesActived, setIsButtonYesActived] = useState<boolean>(
+    activeButton === 'yes',
+  )
+  const [isButtonNoActived, setIsButtonNoActived] = useState<boolean>(
+    activeButton === 'no',
+  )
+
+  const { setIsOnDietNewForm } = useNewMeal()
+  const { setIsOnDietEditForm } = useEditMeal()
 
   function handleYesButton(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     if (!isButtonYesActived) {
       setIsButtonNoActived(false)
       setIsButtonYesActived(true)
+      if (variant === 'new') {
+        setIsOnDietNewForm(true)
+      } else {
+        setIsOnDietEditForm(true)
+      }
     }
   }
   function handleNoButton(event: FormEvent<HTMLFormElement>) {
@@ -22,12 +40,17 @@ export default function DietOptionSelect({ label }: DietOptionSelectProps) {
     if (!isButtonNoActived) {
       setIsButtonYesActived(false)
       setIsButtonNoActived(true)
+      if (variant === 'new') {
+        setIsOnDietNewForm(false)
+      } else {
+        setIsOnDietEditForm(false)
+      }
     }
   }
-
+  
   return (
     <div className="flex flex-col gap-2">
-      <h1 className="text-sm font-bold text-left">{label}</h1>
+      <h1 className="text-sm font-bold text-left">Está dentro da dieta?</h1>
       <div className="flex items-center justify-center gap-4">
         <Select
           variant="yes"

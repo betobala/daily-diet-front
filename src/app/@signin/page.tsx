@@ -6,15 +6,15 @@ import { FormEvent, MouseEvent, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { api } from '@/data/api'
 import { setCookie } from 'cookies-next'
-import axios from 'axios'
 
 export default function SignIn() {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [loginError, setLoginError] = useState<string>()
+
   const router = useRouter()
 
-  function handleTpRegisterPageButton(event: MouseEvent<HTMLButtonElement>) {
+  function handleToRegisterPageButton(event: MouseEvent<HTMLButtonElement>) {
     event.preventDefault()
     router.push('/register')
   }
@@ -24,14 +24,22 @@ export default function SignIn() {
 
     setLoginError('')
 
-    axios
-      .get('localhost:3333/api/meals', { withCredentials: true })
-      .then((response) => {
-        console.log('Authenticated successfully:', response.data)
-      })
-      .catch((error) => {
-        console.error('Authentication failed:', error)
-      })
+    const response = await api('/users', {
+      method: 'PATCH',
+      credentials: 'include',
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+
+    if (response.status === 200) {
+      const { sessionId } = await response.json()
+      setCookie('sessionId', sessionId)
+      router.refresh()
+    } else {
+      setLoginError('E-mail ou senha incorretos!')
+    }
   }
 
   return (
@@ -66,7 +74,7 @@ export default function SignIn() {
         <Button
           text="Cadastrar"
           variant="white"
-          onClick={handleTpRegisterPageButton}
+          onClick={handleToRegisterPageButton}
         />
       </form>
     </div>

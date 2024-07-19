@@ -1,12 +1,31 @@
 'use client'
-import { useSearchParams, usePathname } from 'next/navigation'
+import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Button } from './button'
+import { api } from '@/data/api'
 
-function Modal() {
+interface ModalProps {
+  mealId: string
+}
+
+function Modal({ mealId }: ModalProps) {
   const searchParams = useSearchParams()
   const modal = searchParams.get('modal')
   const pathname = usePathname()
+
+  const router = useRouter()
+
+  async function handleDeleteMeal() {
+    console.log(mealId)
+    const response = await api(`/meals/${mealId}`, {
+      method: 'DELETE',
+      credentials: 'include',
+    })
+
+    if (response.status === 200) {
+      router.push('/')
+    }
+  }
 
   return (
     <>
@@ -22,7 +41,12 @@ function Modal() {
                 <Link href={pathname} className="w-[100px]">
                   <Button text="Cancelar" variant="white" width="180" />
                 </Link>
-                <Button text="Sim, excluir" variant="default" width="150" />
+                <Button
+                  text="Sim, excluir"
+                  variant="default"
+                  width="150"
+                  onClick={handleDeleteMeal}
+                />
               </div>
             </div>
           </div>

@@ -17,10 +17,15 @@ export default function CreateMeal() {
         <h1 className="text-lg text-center font-bold">Nova refeição</h1>
       </div>
       <div className="flex flex-col h-dvh justify-between p-6 bg-gray-7 rounded-3xl">
-        <NewMealForm />
+        <NewMealForm id="new-meal-form" />
 
         <div className="mb-[90px]">
-          <Button text="Cadastrar refeição" variant="default" />
+          <Button
+            text="Cadastrar refeição"
+            variant="default"
+            type="submit"
+            form="new-meal-form"
+          />
         </div>
       </div>
     </div>
