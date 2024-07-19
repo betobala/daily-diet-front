@@ -2,8 +2,6 @@ import type { Metadata } from 'next'
 import { Nunito_Sans as Nunito } from 'next/font/google'
 import './globals.css'
 import { cookies } from 'next/headers'
-import { NewMealProvider } from '@/contexts/new-meal'
-import { EditMealProvider } from '@/contexts/edit-meal'
 
 const nunito = Nunito({ subsets: ['latin'], variable: '--font-nunito-sans' })
 

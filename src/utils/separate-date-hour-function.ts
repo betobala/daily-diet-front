@@ -2,6 +2,7 @@ export function separateDateAndHourString(dataHora: string): {
   date: string
   hour: string
 } {
+  console.log(dataHora)
   // Separando a data e hora da string original
   const [dataCompleta, horaCompleta] = dataHora.split(' ')
 

@@ -24,7 +24,7 @@ async function getMeal(id: string): Promise<Meal> {
 
   const meal = await response.json()
 
-  return meal
+  return meal.meal
 }
 
 export default function MealView({ params }: MealViewProps) {
@@ -32,7 +32,7 @@ export default function MealView({ params }: MealViewProps) {
 
   useEffect(() => {
     async function handleSetMeal() {
-      const { meal } = await getMeal(params.id)
+      const meal = await getMeal(params.id)
       setMeal(meal)
     }
 
@@ -64,7 +64,7 @@ export default function MealView({ params }: MealViewProps) {
           <div className="flex flex-col gap-1">
             <p className="text-sm text-gray-2 font-bold">Data e hora</p>
             {meal && (
-              <p>{`${separateDateAndHourString(meal?.meal_time).date} às ${separateDateAndHourString(meal?.meal_time).hour}`}</p>
+              <p>{`${separateDateAndHourString(meal.meal_time).date} às ${separateDateAndHourString(meal.meal_time).hour}`}</p>
             )}
           </div>
 

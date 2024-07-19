@@ -29,7 +29,7 @@ export default function EditMeal({ params }: MealEditProps) {
 
   useEffect(() => {
     async function handleSetMeal() {
-      const { meal } = await getMeal(params.id)
+      const meal = await getMeal(params.id)
       setMeal(meal)
     }
 
