@@ -61,7 +61,6 @@ export function NewMealForm({ ...props }: NewMealFormProps) {
   }
 
   useEffect(() => {
-    console.log(name, description, date, time, isOnDiet)
   }, [name, description, date, time, isOnDiet])
   return (
     <form

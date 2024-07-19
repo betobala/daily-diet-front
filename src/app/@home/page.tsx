@@ -12,6 +12,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { deleteCookie } from 'cookies-next'
 import { useRouter } from 'next/navigation'
+import axios from 'axios'
 
 function orderDates(arrayDatas: string[]): string[] {
   // Função de comparação para ordenar decrescentemente pelo ano
@@ -60,13 +61,14 @@ export default function Home() {
 
   useEffect(() => {
     async function getSummary() {
-      const response = await api('/meals/summary', {
-        method: 'GET',
-        credentials: 'include',
+      const response = await axios({
+        method: 'get',
+        url: 'http://localhost:3333/api/meals/summary',
+        withCredentials: true,
       })
-      if (response.status === 200) {
-        const summary = await response.json()
 
+      if (response.status === 200) {
+        const summary = response.data
         setSummary(summary)
       } else {
         deleteCookie('sessionId')
@@ -75,20 +77,18 @@ export default function Home() {
     }
 
     async function getAllMeals() {
-      const response = await api('/meals', {
-        method: 'GET',
-        credentials: 'include',
+      axios({
+        method: 'get',
+        url: 'http://localhost:3333/api/meals',
+        withCredentials: true,
       })
-
-      if (response.status === 200) {
-        const { meals } = await response.json()
-
-        setMeals(meals)
-        getAllMealDates(meals)
-      } else {
-        deleteCookie('sessionId')
-        router.refresh()
-      }
+        .then((response) => {
+          setMeals(response.data.meals)
+          getAllMealDates(response.data.meals)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     }
     getAllMeals()
     getSummary()

@@ -16,7 +16,6 @@ function Modal({ mealId }: ModalProps) {
   const router = useRouter()
 
   async function handleDeleteMeal() {
-    console.log(mealId)
     const response = await api(`/meals/${mealId}`, {
       method: 'DELETE',
       credentials: 'include',

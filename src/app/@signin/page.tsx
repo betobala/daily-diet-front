@@ -6,6 +6,7 @@ import { FormEvent, MouseEvent, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { api } from '@/data/api'
 import { setCookie } from 'cookies-next'
+import axios from 'axios'
 
 export default function SignIn() {
   const [email, setEmail] = useState<string>('')
@@ -24,17 +25,12 @@ export default function SignIn() {
 
     setLoginError('')
 
-    const response = await api('/users', {
-      method: 'PATCH',
-      credentials: 'include',
-      body: JSON.stringify({
-        email,
-        password,
-      }),
+    const response = await axios.patch('http://localhost:3333/api/users', {
+      email,
+      password,
     })
-
     if (response.status === 200) {
-      const { sessionId } = await response.json()
+      const { sessionId } = await response.data
       setCookie('sessionId', sessionId)
       router.refresh()
     } else {
