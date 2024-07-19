@@ -65,6 +65,10 @@ export default function Home() {
         method: 'get',
         url: 'http://localhost:3333/api/meals/summary',
         withCredentials: true,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+        },
       })
 
       if (response.status === 200) {
@@ -81,6 +85,10 @@ export default function Home() {
         method: 'get',
         url: 'http://localhost:3333/api/meals',
         withCredentials: true,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+        },
       })
         .then((response) => {
           setMeals(response.data.meals)

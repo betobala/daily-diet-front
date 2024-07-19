@@ -25,10 +25,20 @@ export default function SignIn() {
 
     setLoginError('')
 
-    const response = await axios.patch('http://localhost:3333/api/users', {
-      email,
-      password,
-    })
+    const response = await axios.patch(
+      'http://localhost:3333/api/users',
+      {
+        email,
+        password,
+      },
+      {
+        withCredentials: true,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+        },
+      },
+    )
     if (response.status === 200) {
       const { sessionId } = await response.data
       setCookie('sessionId', sessionId)
