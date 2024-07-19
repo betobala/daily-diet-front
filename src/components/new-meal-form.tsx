@@ -60,8 +60,7 @@ export function NewMealForm({ ...props }: NewMealFormProps) {
     }
   }
 
-  useEffect(() => {
-  }, [name, description, date, time, isOnDiet])
+  useEffect(() => {}, [name, description, date, time, isOnDiet])
   return (
     <form
       onSubmit={handleSubmit}
