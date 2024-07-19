@@ -4,7 +4,7 @@ import { LogoIcon } from '@/components/icons/logo'
 import { Input } from '@/components/input'
 import { FormEvent, MouseEvent, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { api } from '@/data/api'
+
 import { setCookie } from 'cookies-next'
 import axios from 'axios'
 

@@ -3,7 +3,7 @@ import { Button } from '@/components/button'
 import { Header } from '@/components/header'
 import { OffDietIcon } from '@/components/icons/off-diet-icon'
 import { OnDietIcon } from '@/components/icons/on-diet-icon'
-import { api } from '@/data/api'
+
 import { Meal } from '@/data/types/meal'
 import { Summary } from '@/data/types/summary'
 import { separateDateAndHourString } from '@/utils/separate-date-hour-function'
